@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Image, Animated } from 'react-native';
-import logo from '../../assets/icon.png';
+import logo from '../../assets/logo.png';
 
 function SplashScreen({ navigation }) {
     const [fadeAnim] = useState(new Animated.Value(0));
