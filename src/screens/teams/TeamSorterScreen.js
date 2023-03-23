@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
-  Keyboard
+  Keyboard,
+  Dimensions
 } from 'react-native';
 import * as Color from '../../../global/Color';
 
@@ -19,6 +20,10 @@ const TeamSorterScreen = (props) => {
 
   const handleGoBack = () => {
     props.navigation.goBack();
+  };
+
+  const handleReady = () => {
+    // Add your logic for moving to the next page here
   };
 
 const handleNumTeamsChange = (text) => {
@@ -57,14 +62,12 @@ const handleNamesChange = (text) => {
       .map(name => name.trim())
       .filter(name => name !== '');
 
-    console.log(filteredNames)
-
     if (filteredNames.length === 0) {
       alert('Please enter at least one name.');
       return;
     }
 
-    const nameList = filteredNames.split('\n').map((name) => name.trim());
+    const nameList = filteredNames.map((name) => name.trim());
     const nTeams = parseInt(numTeams);
     const nPlayers = parseInt(numPlayers);
 
@@ -98,10 +101,17 @@ const handleNamesChange = (text) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
-        <Text style={styles.backButtonText}>&larr; Back</Text>
-      </TouchableOpacity>
-      <Text style={styles.title}>Team Sorter</Text>
+      <View style={styles.header}>
+        <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
+          <Text style={styles.backButtonText}>&larr; Back</Text>
+        </TouchableOpacity>
+        {teams.length > 0 && (
+          <TouchableOpacity style={styles.readyButton} onPress={handleReady}>
+            <Text style={styles.readyButtonText}>Ready</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+      <Text style={styles.title}>Team Randomizer</Text>
       <Text style={styles.subtitle}>
         Choose one of the options below (up to 64):
       </Text>
@@ -156,42 +166,57 @@ const handleNamesChange = (text) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e9f4fb',
-    paddingHorizontal: 20,
-    paddingTop: 40,
+    backgroundColor: Color.Background,
+    paddingHorizontal: Dimensions.get('window').width * 0.05,
+    paddingTop: Dimensions.get('window').height * 0.05,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: Dimensions.get('window').height * 0.02,
   },
   backButton: {
-    marginBottom: 10,
-    borderColor: Color.Main,
-    borderWidth: 1,
     borderRadius: 5,
     padding: 5,
   },
   backButtonText: {
-    fontSize: 18,
+    fontSize: Dimensions.get('window').width * 0.045,
     color: Color.Main,
+    fontFamily: 'BalsamiqSans',
+  },
+  readyButton: {
+    borderRadius: 5,
+    paddingVertical: Dimensions.get('window').width * 0.02,
+    paddingHorizontal: Dimensions.get('window').height * 0.02,
+    backgroundColor: Color.Button,
+  },
+  readyButtonText: {
+    fontSize: Dimensions.get('window').width * 0.045,
+    color: Color.White,
     fontFamily: 'BalsamiqSans',
   },
   title: {
-    fontSize: 30,
+    fontSize: Dimensions.get('window').width * 0.08,
     fontWeight: 'bold',
     fontFamily: 'BalsamiqSans',
-    marginBottom: 10,
+    marginBottom: Dimensions.get('window').height * 0.02,
     color: Color.Main,
+    textAlign: 'center',
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: Dimensions.get('window').width * 0.04,
     fontFamily: 'BalsamiqSans',
-    marginBottom: 20,
+    marginBottom: Dimensions.get('window').height * 0.02,
     color: Color.Main,
   },
   input: {
-    height: 40,
+    height: Dimensions.get('window').height * 0.05,
     borderColor: Color.InputBorder,
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 10,
-    marginBottom: 10,
+    marginBottom: Dimensions.get('window').height * 0.02,
     fontFamily: 'BalsamiqSans',
     backgroundColor: '#ffffff',
     shadowColor: '#000',
@@ -201,7 +226,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   namesInput: {
-    minHeight: 80,
+    minHeight: Dimensions.get('window').height * 0.1,
     textAlignVertical: 'top',
   },
   inputDisabled: {
@@ -209,18 +234,17 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: Color.Button,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: Dimensions.get('window').height * 0.01,
+    paddingHorizontal: Dimensions.get('window').width * 0.05,
     borderRadius: 5,
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: Dimensions.get('window').height * 0.02,
   },
   buttonDisabled: {
     backgroundColor: '#cccccc',
   },
-
   buttonText: {
-    fontSize: 16,
+    fontSize: Dimensions.get('window').width * 0.04,
     fontWeight: 'bold',
     color: Color.White,
     fontFamily: 'BalsamiqSans',
@@ -228,8 +252,8 @@ const styles = StyleSheet.create({
   teamContainer: {
     backgroundColor: Color.TeamBackground,
     borderRadius: 5,
-    padding: 15,
-    marginBottom: 20,
+    padding: Dimensions.get('window').width * 0.04,
+    marginBottom: Dimensions.get('window').height * 0.02,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
@@ -237,14 +261,14 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   teamTitle: {
-    fontSize: 18,
+    fontSize: Dimensions.get('window').width * 0.045,
     fontWeight: 'bold',
     fontFamily: 'BalsamiqSans',
-    marginBottom: 10,
+    marginBottom: Dimensions.get('window').height * 0.01,
     color: Color.Main,
   },
   playerName: {
-    fontSize: 16,
+    fontSize: Dimensions.get('window').width * 0.04,
     fontFamily: 'BalsamiqSans',
     color: Color.Main,
   },

@@ -17,7 +17,7 @@ const CircleComponent = ({isWhite}) => {
                 position: 'absolute',
                 width: Dimensions.get('window').height * .1,
                 height: Dimensions.get('window').height * .1,
-                opacity: .4
+                opacity: .15
             }
         }
     }

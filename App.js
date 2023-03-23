@@ -7,6 +7,7 @@ import { Asset } from 'expo-asset';
 import * as SplashScreenExpo from 'expo-splash-screen';
 import SplashScreen from './src/splash/SplashScreen';
 import TeamSorterScreen from './src/screens/teams/TeamSorterScreen';
+import AboutScreen from './src/screens/home/AboutScreen';
 
 
 // Creates stack for the Home screens
@@ -19,6 +20,7 @@ const HomeStack = () => {
           headerShown: false
         }}>
         <Home.Screen name="Main" component={HomeScreen} />
+        <Home.Screen name="About" component={AboutScreen} />
         <Home.Screen name="Teams" component={TeamSorterScreen} />
     </Home.Navigator>
   )
