@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "starter-template",
-    "slug": "starter-template",
+    "name": "Brackets",
+    "slug": "brackets",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,6 +23,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9c5bf7db-f3a5-4754-b626-81d37b79ad3c"
+      }
     }
   }
 }

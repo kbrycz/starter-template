@@ -21,7 +21,7 @@ class HomeScreen extends React.Component {
         console.log("share")
         // try {
         //     const result = await Share.share({
-        //         url: 'https://celsius.onelink.me/EyfO/ios?pid=website&c=download-app&af_js_web=true',
+        //         url: 'pp&af_js_web=true',
         //     });
 
         // } 
@@ -49,7 +49,7 @@ class HomeScreen extends React.Component {
         return (
             <View style={styles.background}>
                 <CircleComponent isWhite={false} />
-                <Text style={styles.headerText}>App Title</Text>
+                <Text style={styles.headerText}>Bracket and Team Maker</Text>
                 <View>
                     <Image
                         style={styles.image} 
@@ -59,7 +59,7 @@ class HomeScreen extends React.Component {
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>Main</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.secondary}>
+                <TouchableOpacity style={styles.secondary} onPress={() => this.props.navigation.navigate("Teams")}>
                     <Text style={styles.secondaryText}>Secondary</Text>
                 </TouchableOpacity>
                 <View style={styles.iconView}>

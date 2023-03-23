@@ -1,7 +1,6 @@
-export const MAIN = '#2f3542';
-export const DARK = '#21252e';
-export const DARKER = '#13151a';
-
-export const WHITE = "#fff";
-export const BLACK = "#000";
-export const TEXT = "#fff";
+export const MAIN = '#2d98da';
+export const Main = '#2d98da';
+export const White = '#ffffff';
+export const InputBorder = '#cccccc';
+export const Button = '#1d7cb5';
+export const TeamBackground = '#ffffff';
