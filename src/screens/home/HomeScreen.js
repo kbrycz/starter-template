@@ -40,8 +40,18 @@ class HomeScreen extends React.Component {
         // Linking.openURL('https://apps.apple.com/us/app/celsius-safe-crypto-platform/id1387885523');
     }
 
+    // Head to the about screen
     goToAbout = () => {
         this.props.navigation.navigate("About")
+    }
+
+    // Head to the choose type screen
+    goToChoiceScreen = () => {
+        this.props.navigation.navigate("Choice")
+    }
+
+    goToRandomizeTeams = () => {
+        this.props.navigation.navigate("Teams", {isCreatingBracket: false})
     }
 
     // Sets the status of simple modal
@@ -60,10 +70,10 @@ class HomeScreen extends React.Component {
                         source={require('../../../assets/main.png')}
                         />
                 </View>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={this.goToChoiceScreen}>
                     <Text style={styles.buttonText}>Create Bracket</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.secondary} onPress={() => this.props.navigation.navigate("Teams")}>
+                <TouchableOpacity style={styles.secondary} onPress={this.goToRandomizeTeams}>
                     <Text style={styles.secondaryText}>Team Randomizer</Text>
                 </TouchableOpacity>
                 <View style={styles.iconView}>

@@ -23,7 +23,7 @@ const TeamSorterScreen = (props) => {
   };
 
   const handleReady = () => {
-    // Add your logic for moving to the next page here
+    props.navigation.navigate("Bracket", {teams: teams, isDoubleElimination: props.route.params.isDoubleElimination})
   };
 
 const handleNumTeamsChange = (text) => {
@@ -52,7 +52,6 @@ const handleNamesChange = (text) => {
 
   const handleSubmit = () => {
     Keyboard.dismiss();
-    console.log(names.trim())
     if (names.trim() === '') {
       alert('Please enter at least one name.');
       return;
@@ -105,7 +104,7 @@ const handleNamesChange = (text) => {
         <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
           <Text style={styles.backButtonText}>&larr; Back</Text>
         </TouchableOpacity>
-        {teams.length > 0 && (
+        {teams.length > 0 && props.route.params.isCreatingBracket && (
           <TouchableOpacity style={styles.readyButton} onPress={handleReady}>
             <Text style={styles.readyButtonText}>Ready</Text>
           </TouchableOpacity>
@@ -147,7 +146,7 @@ const handleNamesChange = (text) => {
       >
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {teams.map((team, index) => (
           <View key={index} style={styles.teamContainer}>
             <Text style={styles.teamTitle}>Team {index + 1}</Text>

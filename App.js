@@ -8,6 +8,9 @@ import * as SplashScreenExpo from 'expo-splash-screen';
 import SplashScreen from './src/splash/SplashScreen';
 import TeamSorterScreen from './src/screens/teams/TeamSorterScreen';
 import AboutScreen from './src/screens/home/AboutScreen';
+import TeamPickerScreen from './src/screens/teams/TeamPickerScreen';
+import TeamChoiceScreen from './src/screens/teams/TeamChoiceScreen';
+import BracketScreen from './src/screens/brackets/BracketScreen';
 
 
 // Creates stack for the Home screens
@@ -21,7 +24,10 @@ const HomeStack = () => {
         }}>
         <Home.Screen name="Main" component={HomeScreen} />
         <Home.Screen name="About" component={AboutScreen} />
+        <Home.Screen name="Choice" component={TeamChoiceScreen} />
+        <Home.Screen name="Picker" component={TeamPickerScreen} />
         <Home.Screen name="Teams" component={TeamSorterScreen} />
+        <Home.Screen name="Bracket" component={BracketScreen} />
     </Home.Navigator>
   )
 }
