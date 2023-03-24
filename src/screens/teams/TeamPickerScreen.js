@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import * as Color from '../../../global/Color';
 import { Dimensions } from 'react-native';
+import CircleComponent from '../../components/CircleComponent';
 
 const TeamPickerScreen = (props) => {
   const [numTeams, setNumTeams] = useState('');
@@ -24,7 +25,7 @@ const TeamPickerScreen = (props) => {
   };
 
   const handleNumTeamsChange = (text) => {
-    if (parseInt(text) <= 64 || text === '') {
+    if (parseInt(text) <= 16 || text === '') {
       setNumTeams(text);
       const newTeams = Array(parseInt(text) || 0).fill('');
       setTeams(newTeams);
@@ -61,12 +62,13 @@ const TeamPickerScreen = (props) => {
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
+      <CircleComponent isWhite={false} />
       <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
         <Text style={styles.backButtonText}>&larr; Back</Text>
       </TouchableOpacity>
       <Text style={styles.title}>Team Picker</Text>
       <Text style={styles.subtitle}>
-        Choose the number of teams (up to 64):
+        Choose the number of teams (up to 16):
       </Text>
       <TextInput
         style={styles.numTeamsInput}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import * as Color from '../../../global/Color'; // Make sure the path to Color is correct
+import CircleComponent from '../../components/CircleComponent';
 
 const AboutScreen = (props) => {
   const handleGoBack = () => {
@@ -9,6 +10,7 @@ const AboutScreen = (props) => {
 
   return (
     <View style={styles.container}>
+      <CircleComponent isWhite={false} />
       <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
         <Text style={styles.backButtonText}>&larr; Back</Text>
       </TouchableOpacity>

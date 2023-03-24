@@ -11,6 +11,7 @@ import {
   Dimensions
 } from 'react-native';
 import * as Color from '../../../global/Color';
+import CircleComponent from '../../components/CircleComponent';
 
 const TeamSorterScreen = (props) => {
   const [numTeams, setNumTeams] = useState('');
@@ -27,13 +28,13 @@ const TeamSorterScreen = (props) => {
   };
 
 const handleNumTeamsChange = (text) => {
-  if (parseInt(text) <= 64 || text === '') {
+  if (parseInt(text) <= 16 || text === '') {
     setNumTeams(text);
   }
 };
 
 const handleNumPlayersChange = (text) => {
-  if (parseInt(text) <= 64 || text === '') {
+  if (parseInt(text) <= 16 || text === '') {
     setNumPlayers(text);
   }
 };
@@ -74,6 +75,10 @@ const handleNamesChange = (text) => {
       Alert.alert('Error', 'Please enter valid input');
       return;
     }
+    if (nameList.length > 16) {
+      Alert.alert('Error', 'Maximum number of teams is 16');
+      return;
+    }
 
     const randomizedNames = nameList.sort(() => Math.random() - 0.5);
     let generatedTeams = [];
@@ -100,6 +105,7 @@ const handleNamesChange = (text) => {
 
   return (
     <View style={styles.container}>
+      <CircleComponent isWhite={false} />
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
           <Text style={styles.backButtonText}>&larr; Back</Text>
@@ -112,7 +118,7 @@ const handleNamesChange = (text) => {
       </View>
       <Text style={styles.title}>Team Randomizer</Text>
       <Text style={styles.subtitle}>
-        Choose one of the options below (up to 64):
+        Choose one of the options below (up to 16):
       </Text>
       <TextInput
         style={[styles.input, numPlayers !== '' ? styles.inputDisabled : null]}

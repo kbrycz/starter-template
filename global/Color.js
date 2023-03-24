@@ -1,4 +1,5 @@
 export const Main = '#2d98da';
+export const Text = '#36454F';
 export const Background = "#e9f4fb"
 export const White = '#ffffff';
 export const InputBorder = '#cccccc';
