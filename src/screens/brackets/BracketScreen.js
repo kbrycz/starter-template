@@ -14,11 +14,17 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { PinchGestureHandler, State } from 'react-native-gesture-handler';
 import s4 from '../../../assets/s4.png';
+import s5 from '../../../assets/s5.png';
 import s6 from '../../../assets/s6.png';
+import s7 from '../../../assets/s7.png';
 import s8 from '../../../assets/s8.png';
+import s9 from '../../../assets/s9.png';
 import s10 from '../../../assets/s10.png';
+import s11 from '../../../assets/s11.png';
 import s12 from '../../../assets/s12.png';
+import s13 from '../../../assets/s13.png';
 import s14 from '../../../assets/s14.png';
+import s15 from '../../../assets/s15.png';
 import s16 from '../../../assets/s16.png';
 import * as Color from '../../../global/Color';
 
@@ -50,7 +56,7 @@ const BracketScreen = (props) => {
     imageName += teamCount;
 
     const images = {
-      s4, s6, s8, s10, s12, s14, s16
+      s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16
     };
 
     let image = images[imageName]
